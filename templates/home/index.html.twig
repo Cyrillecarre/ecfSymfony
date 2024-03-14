@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/home.css') }}">
+{% endblock %}
+
+{% block body %}
+
+    <main class="accueil">
+        <div class="mainAccueil">
+            <h1 class="titreAccueil">Bienvenue sur le site <br><span class="titreSpan">GARAGE V.PARROT</span></h1>
+            <p>Garage V.PARROT vous propose également des prestations de réparation et d’entretien de votre véhicule.
+                Nous vous proposons des prestations de qualité à des prix compétitifs.
+            </p>
+            <p>Garage V.PARROT est spécialisée dans la réparation et la vente automobile sur Toulouse. 
+                Grâce à sa parfaite connaissance du marché automobile européen, Garage V.PARROT vous invite à 
+                découvrir son parc de véhicules d’occasions.
+            </p>
+            <div class="article">
+                <article class="articleContent">
+                    <h2>Mandataire Automobile <br>à votre service</h2>
+                    <p>Garage V.PARROT vous propose également des prestations de réparation et d’entretien de votre véhicule. 
+                        Nous vous proposons des prestations de qualité à des prix compétitifs.
+                    </p>
+                </article>
+                <article class="articleContent">
+                    <h2>Solution de Financement <br>de votre véhicule (loa, crédit bail)</h2>
+                    <p>Garage V.PARROT est spécialisée dans la réparation et la vente automobile sur Toulouse. 
+                        Grâce à sa parfaite connaissance du marché automobile européen, Garage V.PARROT vous invite à 
+                        découvrir son parc de véhicules d’occasions.
+                    </p>
+                </article>
+            </div>
+            <div class="aPropos">
+                <h2 class="titreAccueil">à propos de <br><span class="titreSpan">GARAGE V.PARROT</span></h2>
+                <p>Garage V.PARROT vend des voitures d’occasion reconditionné mais également des véhicules neufs de toutes marques jusqu’à -40%. 
+                    Notre catalogue de véhicules d’occasion est très vaste. 
+                    Vous pouvez dès à présent prendre rendez-vous pour essayer votre future voiture.
+                </p>
+            </div>
+        </div>
+    </main>
+    <main class="achat">
+        <div class="achatImg">
+            <img src= "{{ asset('images/accueilachat.png') }}" alt="photoaccueil1">
+        </div>
+        <div class="achatLogo">
+            <i class="fa-solid fa-gear"></i>
+            <i class="fa-solid fa-user-secret"></i>
+            <i class="fa-solid fa-code-compare"></i>
+        </div>
+            <div class="achatText"> 
+                    <h2>Achat</h2>
+                    <p>L’entreprise Garage V.PARROT possède une grande connaissance du marché automobile et trouve des véhicules au meilleur prix.</p>
+                    <h2>Vente</h2>
+                    <p>Garage V.PARROT vous fait économiser jusqu’à 40% sur le prix de vente de votre voiture neuve.</p>
+                    <h2>Reprise</h2>
+                    <p>Nous reprenons votre véhicule au meilleur prix. Contactez-nous pour en savoir plus.</p>
+            </div>
+    </main>
+
+{% endblock %}
