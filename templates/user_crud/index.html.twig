@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des Admins{% endblock %}
+{% block title %}User index{% endblock %}
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('styles/admin_crud.css') }}">
 {% endblock %}
 
 {% block body %}
-    <h1 class="titre">Liste des Admins</h1>
+    <h1 class="titre">Liste des Employés</h1>
 
     <table class="table">
         <thead>
@@ -16,22 +16,22 @@
             </tr>
         </thead>
         <tbody>
-        {% for admin in admins %}
+        {% for user in users %}
             <tr class="tableDescription">
-                <td>{{ admin.email }}</td>
+                <td>{{ user.email }}</td>
                 <td class="tableAction">
-                    <a href="{{ path('app_admin_crud_show', {'id': admin.id}) }}" class="btnActionVoir">Voir</a>
-                    <a href="{{ path('app_admin_crud_edit', {'id': admin.id}) }}" class="btnActionModifier">Modifier</a>
+                    <a href="{{ path('app_user_crud_show', {'id': user.id}) }}" class="btnActionVoir">Voir</a>
+                    <a href="{{ path('app_user_crud_edit', {'id': user.id}) }}" class="btnActionModifier">Modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td>Aucun admin</td>
+                <td>no records found</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_admin_crud_new') }}" class="btnAjouter">Ajouter un Admin</a>
+    <a href="{{ path('app_user_crud_new') }}" class="btnAjouter">Ajouter un Employé</a>
     <a href="{{ path('app_admin') }}" class="btnAction">Retour</a>
 {% endblock %}

@@ -1,11 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}New Admin{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/admin_crud.css') }}">
+{% endblock %}
 
 {% block body %}
-    <h1>Créer un nouveau Admin</h1>
+    <h1 class="titre">Créer un nouveau Admin</h1>
 
     {{ include('admin_crud/_form.html.twig') }}
 
-    <a href="{{ path('app_admin_crud_index') }}">Retour à la liste</a>
+    <a href="{{ path('app_admin_crud_index') }}" class="btnAction">Retour à la liste</a>
 {% endblock %}

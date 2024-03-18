@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New User{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/admin_crud.css') }}">
+{% endblock %}
+
+{% block body %}
+    <h1 class="titre">Creer un nouvel employé</h1>
+
+    {{ include('user_crud/_form.html.twig') }}
+
+    <a href="{{ path('app_user_crud_index') }}" class="btnAction">Retour</a>
+{% endblock %}

@@ -15,7 +15,7 @@
 
 .formContent {
     display: grid;
-    grid-template-columns: 15rem 18rem; ;
+    grid-template-columns: 15rem 18rem;
     flex-direction: column;
     align-items: space-around;
     width: 34rem;

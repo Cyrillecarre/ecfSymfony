@@ -1,9 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Hello AdminController!{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/admin_crud.css') }}">
+{% endblock %}
 
 {% block body %}
 <div>
-    <a class="btn btn-primary" href="{{ path('app_admin_crud_index') }}">Ajouter un Admin</a>
+    <a href="{{ path('app_admin_crud_index') }}" class="btnAction">Ajouter un Administrateur</a>
+    <a href="{{ path('app_user_crud_index') }}" class="btnAction">Ajouter un Employer</a>
 </div>
 {% endblock %}

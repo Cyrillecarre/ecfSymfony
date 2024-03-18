@@ -10,6 +10,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
+use App\Security\UserAuthenticator;
 
 #[Route('/admin/crud')]
 class AdminCrudController extends AbstractController
@@ -23,13 +26,20 @@ class AdminCrudController extends AbstractController
     }
 
     #[Route('/new', name: 'app_admin_crud_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticator $authenticator): Response
     {
         $admin = new Admin();
+        $admin->setRoles(['ROLE_ADMIN']);
         $form = $this->createForm(AdminType::class, $admin);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $admin->setPassword(
+                $userPasswordHasher->hashPassword(
+                    $admin,
+                    $form->get('password')->getData()
+                )
+            );
             $entityManager->persist($admin);
             $entityManager->flush();
 
