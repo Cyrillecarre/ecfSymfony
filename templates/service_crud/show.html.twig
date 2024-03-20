@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Service{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/service.css') }}">
+{% endblock %}
+
+{% block body %}
+    <h1 class="titre">Service</h1>
+
+    <table class="table">
+        <tbody>
+            <tr class="tableIndexShow">
+                <th>Name</th>
+                <td>{{ service.name }}</td>
+            </tr>
+            <tr class="tableDescriptionShow">
+                <th>Description</th>
+                <td>{{ service.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+    {{ include('service_crud/_delete_form.html.twig') }}
+    <a href="{{ path('app_service_crud_edit', {'id': service.id}) }}" class="btnAction">Modifier</a>
+    <a href="{{ path('app_service_crud_index') }}" class="btnAction">Retour</a>
+
+{% endblock %}

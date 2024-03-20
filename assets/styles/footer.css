@@ -18,3 +18,33 @@
 .footer table {
     color: white;
 }
+
+.horaire {
+    display: flex;
+    flex-direction: column;
+}
+
+.horaireTable {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.horaireDay {
+    display: flex;
+    align-items: start;
+    padding-right: 3rem;
+}
+
+.horaireTr {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.horaireTd {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}

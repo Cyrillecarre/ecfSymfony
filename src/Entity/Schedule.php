@@ -23,10 +23,10 @@ class Schedule
     #[ORM\Column(type: Types::TIME_MUTABLE)]
     private ?\DateTimeInterface $hours_f_matin = null;
 
-    #[ORM\Column(type: Types::TIME_MUTABLE)]
+    #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $hours_o_a = null;
 
-    #[ORM\Column(type: Types::TIME_MUTABLE)]
+    #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $hours_f_a = null;
 
     public function getId(): ?int
@@ -75,7 +75,7 @@ class Schedule
         return $this->hours_o_a;
     }
 
-    public function setHoursOA(\DateTimeInterface $hours_o_a): static
+    public function setHoursOA(\DateTimeInterface $hours_o_a): self
     {
         $this->hours_o_a = $hours_o_a;
 
@@ -87,10 +87,48 @@ class Schedule
         return $this->hours_f_a;
     }
 
-    public function setHoursFA(\DateTimeInterface $hours_f_a): static
+    public function setHoursFA(\DateTimeInterface $hours_f_a): self
     {
         $this->hours_f_a = $hours_f_a;
 
         return $this;
+    }
+
+    // Getters formatés
+
+    public function getFormattedHoursOMatin(): ?string
+    {
+        if (!$this->hours_o_matin) {
+            return null;
+        }
+
+        return $this->hours_o_matin->format('H:i');
+    }
+
+    public function getFormattedHoursFMatin(): ?string
+    {
+        if (!$this->hours_f_matin) {
+            return null;
+        }
+
+        return $this->hours_f_matin->format('H:i');
+    }
+
+    public function getFormattedHoursOA(): ?string
+    {
+        if (!$this->hours_o_a) {
+            return null;
+        }
+
+        return $this->hours_o_a->format('H:i');
+    }
+
+    public function getFormattedHoursFA(): ?string
+    {
+        if (!$this->hours_f_a) {
+            return null;
+        }
+
+        return $this->hours_f_a->format('H:i');
     }
 }

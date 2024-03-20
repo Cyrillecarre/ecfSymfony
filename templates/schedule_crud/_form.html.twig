@@ -1,0 +1,19 @@
+{% block body %}
+<div clas="form">
+    {{ form_start(form) }}
+    <div class="formContent">
+        {{ form_label(form.day, 'Jour', {'label_attr': {'class': 'label'}}) }}
+        {{ form_widget(form.day, {'label_attr': {'class': 'input'}}) }}
+        {{ form_label(form.hours_o_matin, 'ouverture/M', {'label_attr': {'class': 'label'}}) }}
+        {{ form_widget(form.hours_o_matin, {'label_attr': {'class': 'input'}}) }}
+        {{ form_label(form.hours_f_matin, 'fermeture/M', {'label_attr': {'class': 'label'}}) }}
+        {{ form_widget(form.hours_f_matin, {'label_attr': {'class': 'input'}}) }}
+        {{ form_label(form.hours_o_a, 'Ouverture/A', {'label_attr': {'class': 'label'}}) }}
+        {{ form_widget(form.hours_o_a, {'label_attr': {'class': 'input'}}) }}
+        {{ form_label(form.hours_f_a, 'Fermeture/A', {'label_attr': {'class': 'label'}}) }}
+        {{ form_widget(form.hours_f_a, {'label_attr': {'class': 'input'}}) }}
+    </div>
+    <button class="btnAction">{{ button_label|default('Save') }}</button>
+    {{ form_end(form) }}
+</div>
+{% endblock %}

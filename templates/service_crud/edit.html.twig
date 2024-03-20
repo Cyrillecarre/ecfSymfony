@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Service{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/service.css') }}">
+{% endblock %}
+
+{% block body %}
+    <h1 class="titre">Modifier un Service</h1>
+
+    {{ include('service_crud/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('service_crud/_delete_form.html.twig') }}
+    <a href="{{ path('app_service_crud_index') }}" class="btnAction">Retour</a>
+{% endblock %}

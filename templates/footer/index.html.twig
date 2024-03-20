@@ -1,0 +1,24 @@
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/footer.css') }}">
+{% endblock %}
+
+{% block body %}
+<footer class="footer">
+        <img class="imgFooter" src="{{ asset('images/footer.jpg') }}" alt="logo" class="logo">
+        <div>     
+           
+        <div>
+            <h2>Adresse <i class="fa-solid fa-location-dot"></i> </h2>
+            <p>Garage V.PARROT</p>
+            <p>29 rue Georges Ohnet</p>
+            <p>31000 Toulouse</p>
+        </div>
+        <div>
+            <h2>Contact</h2>
+            <p>TEL: 06 71 06 19 19</p>
+            <p>Mail:
+        </p>
+        </div>
+    </footer>
+    
+{% endblock %}

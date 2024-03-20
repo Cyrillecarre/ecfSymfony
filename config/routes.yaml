@@ -4,6 +4,6 @@ controllers:
         namespace: App\Controller
     type: attribute
 
-app_admin:
-    path: /admin
-    controller: App\Controller\AdminController::index
+#app_admin:
+#    path: /admin
+#    controller: App\Controller\AdminController::index

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Schedule{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/schedule.css') }}">
+{% endblock %}
+
+{% block body %}
+    <h1 class="titre">Modifier un horaire</h1>
+
+    {{ include('schedule_crud/_form.html.twig', {'button_label': 'Update'}) }}
+    <a href="{{ path('app_schedule_crud_index') }}" class="btnAction">Retour</a>
+{% endblock %}

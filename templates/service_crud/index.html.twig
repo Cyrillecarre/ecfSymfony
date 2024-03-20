@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Service index{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/service.css') }}">
+{% endblock %}
+
+{% block body %}
+    <h1 class="titre">Liste des service</h1>
+
+    <table class="table">
+        <thead>
+            <tr class="tableIndex">
+                <th>Name</th>
+                <th>Description</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for service in services %}
+            <tr class="tableDescription">
+                <td>{{ service.name }}</td>
+                <td>{{ service.description }}</td>
+                <td class="tableAction">
+                    <a href="{{ path('app_service_crud_show', {'id': service.id}) }}" class="btnActionVoir">Voir</a>
+                    <a href="{{ path('app_service_crud_edit', {'id': service.id}) }}" class="btnActionModifier">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td>no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_service_crud_new') }}" class="btnAction">Ajouter un service</a>
+{% endblock %}

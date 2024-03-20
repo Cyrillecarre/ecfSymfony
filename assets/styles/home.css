@@ -15,16 +15,13 @@
     font-size: 4rem;
 }
 
-.accueil {
-    background-image: url("/image_ecf/accueil.jpg");
-}
-
 .mainAccueil {
     display: flex;
     flex-direction: column;
     align-items: normal;
     max-width: 65%;
     margin: 0 auto;
+    padding-bottom: 6rem;
 }
 
 .article {
@@ -49,7 +46,12 @@
 }
 
 .aPropos {
-    padding-top: 12rem;
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin: 0 auto;
+    padding-bottom: 5rem;
+
 }
 
 .achat {
@@ -78,4 +80,28 @@
 
 .achatText {
     display: grid;   
+}
+
+.service {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #d9777f89;
+    padding: 2rem;
+    margin: 2rem;
+    border: 1px solid #D02332;
+}
+
+.hr {
+    border: 5px solid #D02332;
+    width: 40%;
+    margin: 0 auto;
 }
