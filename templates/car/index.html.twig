@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Car index{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/car.css') }}">
+{% endblock %}
+
+{% block body %}
+    <h1 class="titre">Car index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Année</th>
+                <th>Energie</th>
+                <th>Puissance</th>
+                <th>n°porte</th>
+                <th>Prix</th>
+                <th>ImagePath</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for car in cars %}
+            <tr>
+                <td>{{ car.name }}</td>
+                <td>{{ car.date }}</td>
+                <td>{{ car.energie }}</td>
+                <td>{{ car.power }}</td>
+                <td>{{ car.gate }}</td>
+                <td>{{ car.price }}</td>
+                <td>{{ car.imagePath }}</td>
+                <td>
+                    <a href="{{ path('app_car_show', {'id': car.id}) }}" btnActionVoir>Voir plus</a>
+                    <a href="{{ path('app_car_edit', {'id': car.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_car_new') }}">Create new</a>
+{% endblock %}

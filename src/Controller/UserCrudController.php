@@ -11,21 +11,25 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use App\Repository\ScheduleRepository;
 
 #[Route('/user/crud')]
 class UserCrudController extends AbstractController
 {
     #[Route('/', name: 'app_user_crud_index', methods: ['GET'])]
-    public function index(UserRepository $userRepository): Response
+    public function index(UserRepository $userRepository, ScheduleRepository $scheduleRepository): Response
     {
+        $schedules = $scheduleRepository->findAll();
         return $this->render('user_crud/index.html.twig', [
             'users' => $userRepository->findAll(),
+            'schedules' => $schedules,
         ]);
     }
 
     #[Route('/new', name: 'app_user_crud_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager, UserPasswordHasherInterface $userPasswordHasher): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, UserPasswordHasherInterface $userPasswordHasher, ScheduleRepository $scheduleRepository): Response
     {
+        $schedules = $scheduleRepository->findAll();
         $user = new User();
         $user->setRoles(['ROLE_USER']);
         $form = $this->createForm(UserType::class, $user);
@@ -47,20 +51,24 @@ class UserCrudController extends AbstractController
         return $this->render('user_crud/new.html.twig', [
             'user' => $user,
             'form' => $form,
+            'schedules' => $schedules,
         ]);
     }
 
     #[Route('/{id}', name: 'app_user_crud_show', methods: ['GET'])]
-    public function show(User $user): Response
+    public function show(User $user, ScheduleRepository $scheduleRepository): Response
     {
+        $schedules = $scheduleRepository->findAll();
         return $this->render('user_crud/show.html.twig', [
             'user' => $user,
+            'schedules' => $schedules,
         ]);
     }
 
     #[Route('/{id}/edit', name: 'app_user_crud_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, User $user, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, User $user, EntityManagerInterface $entityManager, ScheduleRepository $scheduleRepository): Response
     {
+        $schedules = $scheduleRepository->findAll();
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
@@ -73,6 +81,7 @@ class UserCrudController extends AbstractController
         return $this->render('user_crud/edit.html.twig', [
             'user' => $user,
             'form' => $form,
+            'schedules' => $schedules,
         ]);
     }
 

@@ -1,0 +1,17 @@
+{% block body %}
+<div class="form">
+        {{ form_start(form) }}
+    <div class="formContent">
+        {{ form_label(form.count, 'Note', {'label_attr': {'class':'label'}}) }}
+        {{ form_widget(form.count, {'label_attr': {'class': 'input'}}) }}
+        {{ form_label(form.name, 'Nom', {'label_attr': {'class':'label'}}) }}
+        {{ form_widget(form.name, {'label_attr': {'class': 'input'}}) }}
+        {{ form_label(form.date, 'Date', {'label_attr': {'class':'label'}}) }}
+        {{ form_widget(form.date, {'label_attr': {'class': 'input'}}) }}
+        {{ form_label(form.content, 'Commentaire', {'label_attr': {'class':'label'}}) }}
+        {{ form_widget(form.content, {'label_attr': {'class': 'input'}}) }}
+    <button class="btnActionForm">{{ button_label|default('Enregistrer') }}</button>
+    <div>
+{{ form_end(form) }}
+{% endblock %}
+

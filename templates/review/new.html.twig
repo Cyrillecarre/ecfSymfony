@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Review{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/review.css') }}">
+{% endblock %}
+
+{% block body %}
+    <h1 class="titre">Nouveau Commentaire</h1>
+    {{ include('review/_form.html.twig') }}
+    <a href="{{ path('app_review_show') }}" class="btnAction">Retour</a>
+{% endblock %}

@@ -17,8 +17,9 @@ class ScheduleCrudController extends AbstractController
     #[Route('/', name: 'app_schedule_crud_index', methods: ['GET'])]
     public function index(ScheduleRepository $scheduleRepository): Response
     {
+        $schedules = $scheduleRepository->findAll();
         return $this->render('schedule_crud/index.html.twig', [
-            'schedules' => $scheduleRepository->findAll(),
+            'schedules' => $schedules,
         ]);
     }
 
@@ -44,16 +45,20 @@ class ScheduleCrudController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_schedule_crud_show', methods: ['GET'])]
-    public function show(Schedule $schedule): Response
+    public function show(Schedule $schedule, ScheduleRepository $scheduleRepository): Response
     {
+        $schedules = $scheduleRepository->findAll();
         return $this->render('schedule_crud/show.html.twig', [
             'schedule' => $schedule,
+            'schedules' => $schedules,
+
         ]);
     }
 
     #[Route('/{id}/edit', name: 'app_schedule_crud_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Schedule $schedule, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, Schedule $schedule, EntityManagerInterface $entityManager, ScheduleRepository $scheduleRepository): Response
     {
+        $schedules = $scheduleRepository->findAll();
         $form = $this->createForm(ScheduleType::class, $schedule);
         $form->handleRequest($request);
 
@@ -70,6 +75,7 @@ class ScheduleCrudController extends AbstractController
         return $this->render('schedule_crud/edit.html.twig', [
             'schedule' => $schedule,
             'form' => $form,
+            'schedules' => $schedules,
         ]);
     }
 

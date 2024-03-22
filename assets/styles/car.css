@@ -1,0 +1,55 @@
+.btnAction {
+    display: flex;
+    width: 11rem;
+    margin: 0 auto;
+    background-color: #d9777f89;
+    border: 2px solid #D02332;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    margin-top: 2rem;
+}
+
+.btnActionModifier {
+    background-color: #3f2bf0;
+    color: white;
+    border: none;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.titre {
+    font-size: 3rem;
+    color: #D02332;
+    margin: 0;
+    padding: 5rem;
+    text-align: center;
+    max-width: 65%;
+    margin: 0 auto;
+    text-transform: uppercase;
+}
+
+.table {
+    background-color: #d9777f89;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 60%;
+    margin-bottom: 2rem;
+    border: 2px solid #D02332;
+    border-radius: 1rem;
+}
+
+.btnActionVoir {
+    background-color: #35944b;
+    color: white;
+    border: none;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}

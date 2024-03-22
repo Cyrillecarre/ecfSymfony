@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Review{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/review.css') }}">
+{% endblock %}
+
+{% block body %}
+    <h1 class="titre">Avis</h1>
+    <a href="{{ path('app_review_new') }}" class="btnAction">Déposer un avis</a>
+    <div class="tableGrid">
+    {% for review in reviews %}
+        {% if review.isApprouved == "1" %}
+        <div class="tableShow">
+                <p>{{ review.count }}</p>
+                <p>{{ review.name }}</p>
+                <p>{{ review.date ? review.date|date('Y-m-d') : '' }}</p>
+                <p>{{ review.content }}</p>
+        </div>
+        {% endif %}
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </div>
+
+    <a href="{{ path('app_review_index') }}" class="btnAction">Retour</a>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Review in{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/review.css') }}">
+{% endblock %}
+
+{% block body %}
+    <h1 class="titre">Avis des Consommateurs</h1>
+
+    <table class="table">
+        <tbody>
+        {% for review in reviews %}
+            <tr class="tableDescription">
+                <td>{{ review.count }}</td>
+                <td>{{ review.name }}</td>
+                <td>{{ review.date ? review.date|date('Y-m-d') : '' }}</td>
+                <td>{{ review.content }}</td>
+                <td class="tableAction">
+                    <a href="{{ path('app_review_edit', {'id': review.id}) }}" class="btnActionModifier">Modifier</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

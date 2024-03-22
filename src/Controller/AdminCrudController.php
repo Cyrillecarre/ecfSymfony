@@ -13,21 +13,25 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 use App\Security\UserAuthenticator;
+use App\Repository\ScheduleRepository;
 
 #[Route('/admin/crud')]
 class AdminCrudController extends AbstractController
 {
     #[Route('/', name: 'app_admin_crud_index', methods: ['GET'])]
-    public function index(AdminRepository $adminRepository): Response
+    public function index(AdminRepository $adminRepository, ScheduleRepository $scheduleRepository): Response
     {
+        $schedules = $scheduleRepository->findAll();
         return $this->render('admin_crud/index.html.twig', [
             'admins' => $adminRepository->findAll(),
+            'schedules' => $schedules,
         ]);
     }
 
     #[Route('/new', name: 'app_admin_crud_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticator $authenticator): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticator $authenticator, ScheduleRepository $scheduleRepository): Response
     {
+        $schedules = $scheduleRepository->findAll();
         $admin = new Admin();
         $admin->setRoles(['ROLE_ADMIN']);
         $form = $this->createForm(AdminType::class, $admin);
@@ -49,20 +53,14 @@ class AdminCrudController extends AbstractController
         return $this->render('admin_crud/new.html.twig', [
             'admin' => $admin,
             'form' => $form,
-        ]);
-    }
-
-    #[Route('/{id}', name: 'app_admin_crud_show', methods: ['GET'])]
-    public function show(Admin $admin): Response
-    {
-        return $this->render('admin_crud/show.html.twig', [
-            'admin' => $admin,
+            'schedules' => $schedules,
         ]);
     }
 
     #[Route('/{id}/edit', name: 'app_admin_crud_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Admin $admin, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, Admin $admin, EntityManagerInterface $entityManager, ScheduleRepository $scheduleRepository): Response
     {
+        $schedules = $scheduleRepository->findAll();
         $form = $this->createForm(AdminType::class, $admin);
         $form->handleRequest($request);
 
@@ -75,6 +73,7 @@ class AdminCrudController extends AbstractController
         return $this->render('admin_crud/edit.html.twig', [
             'admin' => $admin,
             'form' => $form,
+            'schedules' => $schedules,
         ]);
     }
 

@@ -6,17 +6,16 @@ use App\Repository\ScheduleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use App\Entity\Schedule;
 
-class FootController extends AbstractController
+class FooterController extends AbstractController
 {
-    #[Route('/foot', name: 'app_foot')]
+    #[Route('/footer', name: 'app_footer')]
     public function index(ScheduleRepository $scheduleRepository): Response
     {
-        $schedules = $scheduleRepository->findAll();
 
-        return $this->render('foot/index.html.twig', [
-            'controller_name' => 'FootController',
+        $schedules = $scheduleRepository->findAll();
+        return $this->render('footer/index.html.twig', [
+            'controller_name' => 'FooterController',
             'schedules' => $schedules,
         ]);
     }
