@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Car{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/car.css') }}">
+{% endblock %}
+
+{% block header %}
+    <h1>Plus d'info</h1>
+{% endblock %}
+
+{% block body %}
+    <h1>{{ car.name }}</h1>
+    <p>Date : {{ car.date }}</p>
+    <p>Kilometrage : {{ car.kilometrage }} km</p>
+    <p>Énergie : {{ car.energie }}</p>
+    <p>Puissance : {{ car.power }} ch</p>
+    <p>Nombre de portes : {{ car.gate }}</p>
+    <p>Prix : {{ car.price }} €</p>
+
+    {% if car.imagePath %}
+        <img src="{{ asset('uploads/' ~ car.imagePath) }}" alt="Image de la voiture">
+    {% else %}
+        <p>Image non disponible</p>
+    {% endif %}
+
+    <div class="other-photos">
+        <h2>Autres photos</h2>
+        {% if car.photo2 %}
+            <img src="{{ asset('uploads/' ~ car.photo2) }}" alt="Autre photo 1">
+        {% endif %}
+        {% if car.photo3 %}
+            <img src="{{ asset('uploads/' ~ car.photo3) }}" alt="Autre photo 2">
+        {% endif %}
+        {% if car.photo4 %}
+            <img src="{{ asset('uploads/' ~ car.photo4) }}" alt="Autre photo 3">
+        {% endif %}
+        {% if car.photo5 %}
+            <img src="{{ asset('uploads/' ~ car.photo5) }}" alt="Autre photo 4">
+        {% endif %}
+    </div>
+
+    <a href="{{ path('app_car_show') }}" class="btnAction">Retour à la liste des voitures</a>
+{% endblock %}

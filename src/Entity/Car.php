@@ -4,8 +4,6 @@ namespace App\Entity;
 
 use App\Repository\CarRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 
 #[ORM\Entity(repositoryClass: CarRepository::class)]
 class Car
@@ -21,6 +19,9 @@ class Car
     #[ORM\Column]
     private ?int $date = null;
 
+    #[ORM\Column]
+    private ?int $kilometrage = null;
+
     #[ORM\Column(length: 255)]
     private ?string $energie = null;
 
@@ -34,46 +35,19 @@ class Car
     private ?int $price = null;
 
     #[ORM\Column(nullable:true)]
-    private $imagePath = null;
+    private ?string $imagePath = null;
 
-    /**
-     * @ORM\OneToMany(targetEntity=CarPhoto::class, mappedBy="car")
-     */
-     private $carPhotos;
+    #[ORM\Column(nullable:true)]
+    private ?string $photo2 = null;
 
-     public function __construct()
-     {
-         $this->carPhotos = new ArrayCollection();
-     }
+    #[ORM\Column(nullable:true)]
+    private ?string $photo3 = null;
 
-     /**
-     * @return Collection|CarPhoto[]
-     */
-    public function getCarPhotos(): Collection
-    {
-        return $this->carPhotos;
-    }
+    #[ORM\Column(nullable:true)]
+    private ?string $photo4 = null;
 
-    public function addCarPhoto(CarPhoto $carPhoto): self
-    {
-        if (!$this->carPhotos->contains($carPhoto)) {
-            $this->carPhotos[] = $carPhoto;
-            $carPhoto->setCar($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCarPhoto(CarPhoto $carPhoto): self
-    {
-        if ($this->carPhotos->removeElement($carPhoto)) {
-            if ($carPhoto->getCar() === $this) {
-                $carPhoto->setCar(null);
-            }
-        }
-
-        return $this;
-    }
+    #[ORM\Column(nullable:true)]
+    private ?string $photo5 = null;
 
     public function getId(): ?int
     {
@@ -85,9 +59,21 @@ class Car
         return $this->name;
     }
 
-    public function setName(string $name): static
+    public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getKilometrage(): ?int
+    {
+        return $this->kilometrage;
+    }
+
+    public function setKilometrage(int $kilometrage): self
+    {
+        $this->kilometrage = $kilometrage;
 
         return $this;
     }
@@ -97,7 +83,7 @@ class Car
         return $this->date;
     }
 
-    public function setDate(int $date): static
+    public function setDate(int $date): self
     {
         $this->date = $date;
 
@@ -109,7 +95,7 @@ class Car
         return $this->energie;
     }
 
-    public function setEnergie(string $energie): static
+    public function setEnergie(string $energie): self
     {
         $this->energie = $energie;
 
@@ -121,7 +107,7 @@ class Car
         return $this->power;
     }
 
-    public function setPower(int $power): static
+    public function setPower(int $power): self
     {
         $this->power = $power;
 
@@ -133,7 +119,7 @@ class Car
         return $this->gate;
     }
 
-    public function setGate(int $gate): static
+    public function setGate(int $gate): self
     {
         $this->gate = $gate;
 
@@ -145,7 +131,7 @@ class Car
         return $this->price;
     }
 
-    public function setPrice(int $price): static
+    public function setPrice(int $price): self
     {
         $this->price = $price;
 
@@ -157,9 +143,57 @@ class Car
         return $this->imagePath;
     }
 
-    public function setImagePath(string $imagePath): static
+    public function setImagePath(string $imagePath): self
     {
         $this->imagePath = $imagePath;
+
+        return $this;
+    }
+
+    public function getPhoto2(): ?string
+    {
+        return $this->photo2;
+    }
+
+    public function setPhoto2(?string $photo2): self
+    {
+        $this->photo2 = $photo2;
+
+        return $this;
+    }
+
+    public function getPhoto3(): ?string
+    {
+        return $this->photo3;
+    }
+
+    public function setPhoto3(?string $photo3): self
+    {
+        $this->photo3 = $photo3;
+
+        return $this;
+    }
+
+    public function getPhoto4(): ?string
+    {
+        return $this->photo4;
+    }
+
+    public function setPhoto4(?string $photo4): self
+    {
+        $this->photo4 = $photo4;
+
+        return $this;
+    }
+
+    public function getPhoto5(): ?string
+    {
+        return $this->photo5;
+    }
+
+    public function setPhoto5(?string $photo5): self
+    {
+        $this->photo5 = $photo5;
 
         return $this;
     }

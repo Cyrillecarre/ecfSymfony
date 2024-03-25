@@ -1,50 +1,86 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Car{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/car.css') }}">
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('scripts/filtre.js') }}"></script>
+{% endblock %}
+
+{% block header %}
+    <h1>Car</h1>
+{% endblock %}
 
 {% block body %}
-    <h1>Car</h1>
+    <h1 class="titre">Car</h1>
+    <h3 class="titreFiltre">Ajustez vos critères de recherches</h3>
+        <form class="filtre" id="filtreForm" data-action="{{ path('app_car_show') }}">
+            <div class="filtreContent">
+                <label class="label" for="rangeInputPrix">Prix :</label><br>
+                <input type="range" name="rangeInputPrix" id="rangeInputPrix" min="0" max="40000" value="50%">
+                <p>Prix maximum : <span id="currentValuePrix">20000</span><span> €</span></p>   
+            </div>
+            <div class="filtreContent">
+                <label class="label" for="rangeInputAnnee">Année :</label><br>
+                <input type="range" name="rangeInputAnnee" id="rangeInputAnnee" min="2004" max="2024" value="50%">
+                <p>Année minimum: <span id="currentValueAnnee">2014</span></p>    
+            </div>
+            <div class="filtreContent">
+                <label class="label" for="rangeInputKm">Kilométrage :</label><br>
+                <input type="range" name="rangeInputKm" id="rangeInputKm" min="0" max="300000" value="50%">
+                <p>Km maximum : <span id="currentValueKm">150000</span><span> km</span></p>    
+            </div>
+        </form>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ car.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ car.name }}</td>
-            </tr>
-            <tr>
-                <th>Date</th>
-                <td>{{ car.date }}</td>
-            </tr>
-            <tr>
-                <th>Energie</th>
-                <td>{{ car.energie }}</td>
-            </tr>
-            <tr>
-                <th>Power</th>
-                <td>{{ car.power }}</td>
-            </tr>
-            <tr>
-                <th>Gate</th>
-                <td>{{ car.gate }}</td>
-            </tr>
-            <tr>
-                <th>Price</th>
-                <td>{{ car.price }}</td>
-            </tr>
-            <tr>
-                <th>ImagePath</th>
-                <td>{{ car.imagePath }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_car_index') }}">back to list</a>
-
-    <a href="{{ path('app_car_edit', {'id': car.id}) }}">edit</a>
-
-    {{ include('car/_delete_form.html.twig') }}
+    <main class="main">
+        {% for car in cars %}
+        <div class="card">
+            <table class="tableImg">
+                <tbody>
+                    <tr>
+                        <td class="titreImg">{{ car.name }}</td>
+                    </tr>
+                    <tr>
+                        <td class="cardImg">
+                        {% if car.imagePath %}
+                                <img src="{{ asset('uploads/' ~ car.imagePath) }}" alt="Image de la voiture">
+                            {% else %}
+                                Image non disponible
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr class="tableInfo">
+                        <th>Année</th>
+                        <td id="carDate">{{ car.date }}</td>
+                    </tr>
+                    <tr class="tableInfo">
+                        <th>Kilometre</th>
+                        <td id="carKilometrage">{{ car.kilometrage }} km</td>
+                    <tr class="tableInfo">
+                        <th>Energie</th>
+                        <td>{{ car.energie }}</td>
+                    </tr>
+                    <tr class="tableInfo">
+                        <th>Puissance</th>
+                        <td>{{ car.power }} ch</td>
+                    </tr>
+                    <tr class="tableInfo">
+                        <th>n°porte</th>
+                        <td>{{ car.gate }}</td>
+                    </tr>
+                    <tr class="tableInfo">
+                        <th>Prix</th>
+                        <td id="carPrix">{{ car.price }} €</td>
+                    </tr>
+                    <tr>
+                        <td class="btnPlus">
+                        <a href="{{ path('app_car_showDetail', {'id': car.id}) }}">Voir plus</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    {% endfor %}
+    </main>
 {% endblock %}

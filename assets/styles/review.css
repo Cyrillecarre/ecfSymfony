@@ -22,6 +22,16 @@
     cursor: pointer;
 }
 
+.btnActionVoir {
+    background-color: #35944b;
+    color: white;
+    border: none;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
 .titre {
     font-size: 3rem;
     color: #D02332;

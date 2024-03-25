@@ -36,51 +36,75 @@ class CarController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // Enregistrement des détails de la voiture dans la table Car
+            $imageFile = $form->get('imagePath')->getData();
+            $imageName = md5(uniqid()) . '.' . $imageFile->guessExtension();
+            $imageFile->move(
+                $this->getParameter('kernel.project_dir') . '/public/uploads/',
+                $imageName
+            );
+            $car->setImagePath($imageName);
+
+            $imageFile2 = $form->get('photo2')->getData();
+            if ($imageFile2) {
+                $imageName2 = md5(uniqid()) . '.' . $imageFile2->guessExtension();
+                $imageFile2->move(
+                    $this->getParameter('kernel.project_dir') . '/public/uploads/',
+                    $imageName2
+                );
+                $car->setPhoto2($imageName2);
+            }
+
+            $imageFile3 = $form->get('photo3')->getData();
+            if ($imageFile3) {
+                $imageName3 = md5(uniqid()) . '.' . $imageFile3->guessExtension();
+                $imageFile3->move(
+                    $this->getParameter('kernel.project_dir') . '/public/uploads/',
+                    $imageName3
+                );
+                $car->setPhoto3($imageName3);
+            }
+
+            $imageFile4 = $form->get('photo4')->getData();
+            if ($imageFile4) {
+                $imageName4 = md5(uniqid()) . '.' . $imageFile4->guessExtension();
+                $imageFile4->move(
+                    $this->getParameter('kernel.project_dir') . '/public/uploads/',
+                    $imageName4
+                );
+                $car->setPhoto4($imageName4);
+            }
+
+            $imageFile5 = $form->get('photo5')->getData();
+            if ($imageFile5) {
+                $imageName5 = md5(uniqid()) . '.' . $imageFile5->guessExtension();
+                $imageFile5->move(
+                    $this->getParameter('kernel.project_dir') . '/public/uploads/',
+                    $imageName5
+                );
+                $car->setPhoto5($imageName5);
+            }
+
             $entityManager->persist($car);
             $entityManager->flush();
-    
-            // Récupération des autres photos du formulaire
-            $otherPhotos = $request->files->get('car')['otherPhotos'];
-    
-            // Enregistrement des chemins d'accès des autres photos dans la table CarPhoto
-            foreach ($otherPhotos as $photo) {
-                // Génération d'un nom de fichier unique pour la photo
-                $fileName = md5(uniqid()) . '.' . $photo->guessExtension();
-                
-                // Déplacement de la photo vers le répertoire de destination
-                $photo->move(
-                    $this->getParameter('kernel.project_dir') . '/public/uploads/',
-                    $fileName
-                );
-    
-                // Création de l'entité CarPhoto et association avec la voiture enregistrée
-                $carPhoto = new CarPhoto();
-                $carPhoto->setCar($car);
-                $carPhoto->setImagePath($fileName);
-                
-                // Enregistrement de l'entité CarPhoto dans la base de données
-                $entityManager->persist($carPhoto);
-            }
-    
-            $entityManager->flush();
-    
+
             return $this->redirectToRoute('app_car_index');
         }
-    
-        return $this->render('car/new.html.twig', [
-            'car' => $car,
-            'form' => $form->createView(),
-            'schedules' => $schedules,
-        ]);
-    }
 
-    #[Route('/{id}', name: 'app_car_show', methods: ['GET'])]
-    public function show(Car $car, ScheduleRepository $scheduleRepository): Response
+    return $this->render('car/new.html.twig', [
+        'car' => $car,
+        'form' => $form->createView(),
+        'schedules' => $schedules,
+    ]);
+}
+
+    
+
+    #[Route('/show', name: 'app_car_show', methods: ['GET'])]
+    public function show(CarRepository $carRepository, ScheduleRepository $scheduleRepository): Response
     {
         $schedules = $scheduleRepository->findAll();
         return $this->render('car/show.html.twig', [
-            'car' => $car,
+            'cars' => $carRepository->findAll(),
             'schedules' => $schedules,
         ]);
     }
@@ -115,4 +139,30 @@ class CarController extends AbstractController
 
         return $this->redirectToRoute('app_car_index', [], Response::HTTP_SEE_OTHER);
     }
+
+    #[Route('/showDetail/{id}/', name: 'app_car_showDetail', methods: ['GET'])]
+    public function showDetail(int $id, CarRepository $carRepository, ScheduleRepository $scheduleRepository): Response
+    {
+        $schedules = $scheduleRepository->findAll();
+        $car = $carRepository->find($id);
+
+        if (!$car) {
+            throw $this->createNotFoundException('Voiture non trouvée');
+        }
+
+        $mainPhoto = $car->getImagePath();
+        $otherPhotos = [
+            $car->getPhoto2(),
+            $car->getPhoto3(),
+            $car->getPhoto4(),
+            $car->getPhoto5(),
+        ];
+
+    return $this->render('car/showDetail.html.twig', [
+        'car' => $car,
+        'mainPhoto' => $mainPhoto,
+        'otherPhotos' => $otherPhotos,
+        'schedules' => $schedules,
+    ]);
+}
 }

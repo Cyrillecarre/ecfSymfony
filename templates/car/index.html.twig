@@ -6,34 +6,34 @@
 {% endblock %}
 
 {% block body %}
-    <h1 class="titre">Car index</h1>
+    <h1 class="titre">Véhicules</h1>
 
     <table class="table">
         <thead>
-            <tr>
+            <tr class="tableIndex">
                 <th>Nom</th>
                 <th>Année</th>
+                <th>Kilométrage</th>
                 <th>Energie</th>
                 <th>Puissance</th>
                 <th>n°porte</th>
                 <th>Prix</th>
-                <th>ImagePath</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for car in cars %}
-            <tr>
+            <tr class="tableDescription">
                 <td>{{ car.name }}</td>
                 <td>{{ car.date }}</td>
+                <td>{{ car.Kilometrage }}</td>
                 <td>{{ car.energie }}</td>
                 <td>{{ car.power }}</td>
                 <td>{{ car.gate }}</td>
                 <td>{{ car.price }}</td>
-                <td>{{ car.imagePath }}</td>
-                <td>
-                    <a href="{{ path('app_car_show', {'id': car.id}) }}" btnActionVoir>Voir plus</a>
-                    <a href="{{ path('app_car_edit', {'id': car.id}) }}">Modifier</a>
+                <td class="tableAction">
+                    <a href="{{ path('app_car_show', {'id': car.id}) }}" class="btnActionVoir">Voir</a>
+                    <a href="{{ path('app_car_edit', {'id': car.id}) }}" class="btnActionModifier">Modifier</a>
                 </td>
             </tr>
         {% else %}
@@ -44,5 +44,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_car_new') }}">Create new</a>
+    <a href="{{ path('app_car_new') }}" class="btnAction">Ajouter un véhicule</a>
 {% endblock %}
