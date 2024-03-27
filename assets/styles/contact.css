@@ -1,0 +1,66 @@
+.titre {
+    font-size: 3rem;
+    color: #D02332;
+    margin: 0;
+    padding: 5rem;
+    text-align: center;
+    max-width: 65%;
+    margin: 0 auto;
+    text-transform: uppercase;
+}
+
+.btnAction {
+    display: flex;
+    width: 11rem;
+    margin: 0 auto;
+    background-color: #d9777f89;
+    border: 2px solid #D02332;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    margin-top: 2rem;
+}
+
+.form {
+    flex-direction: column;
+    height: 25rem;
+    margin: 0 auto; 
+}
+
+.label {
+    font-size: 1rem;
+    margin: 0;
+    padding: 0.5rem;
+}
+
+.formContent {
+    display: grid;
+    grid-template-columns: 15rem 18rem;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 34rem;
+    height: 17rem;
+    margin: 0 auto;
+    padding: 5px;
+    gap: 6px;
+    border: 3px solid #D92332;
+    background-color: #d9777f88;
+    border-radius: 1rem;
+}
+
+.btnActionForm {
+    grid-column: span 2;
+    width: 11rem;
+    margin: 0 auto;
+    background-color: #d9777f89;
+    border: 2px solid #D02332;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    margin-top: 2rem;
+}

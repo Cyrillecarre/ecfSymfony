@@ -1,12 +1,10 @@
 document.addEventListener('DOMContentLoaded', function () {
-
     const rangeInputPrix = document.getElementById('rangeInputPrix');
     const rangeInputAnnee = document.getElementById('rangeInputAnnee');
     const rangeInputKm = document.getElementById('rangeInputKm');
     const currentValuePrix = document.getElementById('currentValuePrix');
     const currentValueAnnee = document.getElementById('currentValueAnnee');
     const currentValueKm = document.getElementById('currentValueKm');
-
 
     rangeInputPrix.addEventListener('input', (event) => {
         currentValuePrix.textContent = event.target.value;
@@ -20,34 +18,70 @@ document.addEventListener('DOMContentLoaded', function () {
         currentValueKm.textContent = event.target.value;
     });
 
-    const cars = Array.from(document.querySelectorAll('.tableImg'));
+    const form = document.getElementById('filtreForm');
 
-    rangeInputPrix.addEventListener('input', filterVehicles);
-    rangeInputAnnee.addEventListener('input', filterVehicles);
-    rangeInputKm.addEventListener('input', filterVehicles);
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
 
-    // Fonction de filtrage des véhicules
-    function filterVehicles() {
         const prixMax = parseInt(rangeInputPrix.value);
         const anneeMin = parseInt(rangeInputAnnee.value);
         const kmMax = parseInt(rangeInputKm.value);
 
-        // Filtrer les véhicules en fonction des critères sélectionnés
-        cars.forEach(car => {
-            const carAnnee = parseInt(car.querySelector('#carDate').textContent);
-            const carKm = parseInt(car.querySelector('#carKilometrage').textContent);
-            const carPrix = parseInt(car.querySelector('#carPrix').textContent);
+        // Construction de l'URL pour la requête Fetch
+        const url = form.getAttribute('data-action');
 
-            if (carAnnee >= anneeMin && carKm <= kmMax && carPrix <= prixMax) {
-                car.style.display = 'block';
-            } else {
-                car.style.display = 'none';
+        fetch(url, {
+            method: 'POST',
+            body: JSON.stringify({ prixMax, anneeMin, kmMax }),
+            headers: {
+                'Content-Type': 'application/json'
             }
+        })
+        .then(response => {
+            console.log('reponse serveur', response);
+            return response.text();
+        })
+        .then(text => {
+            console.log('Contenu de la réponse :', text);
+        })
+        .then(data => {
+            filterVehicles(data);    
+        })
+        .catch(error => {
+            console.error('Erreur lors de la requête:', error);
         });
-    }
+    });
+});
+
+function filterVehicles(data) {
+    const prixMax = parseInt(rangeInputPrix.value);
+    const anneeMin = parseInt(rangeInputAnnee.value);
+    const kmMax = parseInt(rangeInputKm.value);
+
+    // Sélectionnez toutes les cartes de véhicules
+    const cards = document.querySelectorAll('.card');
+
+    // Parcourez chaque carte de véhicule
+    cards.forEach(card => {
+        // Récupérez les informations du véhicule à partir de la carte
+        const carDate = parseInt(card.querySelector('#carDate').textContent);
+        const carKilometrage = parseInt(card.querySelector('#carKilometrage').textContent);
+        const carPrix = parseInt(card.querySelector('#carPrix').textContent);
+
+        // Vérifiez si les critères de filtrage sont satisfaits
+        if (carDate >= anneeMin && carKilometrage <= kmMax && carPrix <= prixMax) {
+            // Si les critères sont satisfaits, affichez la carte
+            card.style.display = 'block';
+        } else {
+            // Sinon, masquez la carte
+            card.style.display = 'none';
+        }
+    });
+}
 
 
-class Filtre {
+
+/*class Filtre {
     constructor() {
         this.filtreForm = document.getElementById('filtreForm');
 
@@ -83,4 +117,4 @@ class Filtre {
 
 const filtre = new Filtre();
 
-});
+});*/

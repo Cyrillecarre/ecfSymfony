@@ -11,8 +11,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use App\Repository\ScheduleRepository;
-use App\Entity\CarPhoto;
 use symfony\component\httpfoundation\file\uploadedfile;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 #[Route('/car')]
 class CarController extends AbstractController
@@ -99,7 +99,7 @@ class CarController extends AbstractController
 
     
 
-    #[Route('/show', name: 'app_car_show', methods: ['GET'])]
+    #[Route('/show', name: 'app_car_show', methods: ['GET', 'POST'])]
     public function show(CarRepository $carRepository, ScheduleRepository $scheduleRepository): Response
     {
         $schedules = $scheduleRepository->findAll();
@@ -141,8 +141,9 @@ class CarController extends AbstractController
     }
 
     #[Route('/showDetail/{id}/', name: 'app_car_showDetail', methods: ['GET'])]
-    public function showDetail(int $id, CarRepository $carRepository, ScheduleRepository $scheduleRepository): Response
+    public function showDetail(int $id, CarRepository $carRepository, ScheduleRepository $scheduleRepository, UrlGeneratorInterface $urlGenerator, Car $car): Response
     {
+        
         $schedules = $scheduleRepository->findAll();
         $car = $carRepository->find($id);
 
@@ -158,11 +159,17 @@ class CarController extends AbstractController
             $car->getPhoto5(),
         ];
 
-    return $this->render('car/showDetail.html.twig', [
-        'car' => $car,
-        'mainPhoto' => $mainPhoto,
-        'otherPhotos' => $otherPhotos,
-        'schedules' => $schedules,
-    ]);
-}
+        $contactFormUrl = $urlGenerator->generate('contact_form', [
+            'car_name' => $car->getName(),
+            'car_price' => $car->getPrice(),
+        ]);
+
+        return $this->render('car/showDetail.html.twig', [
+            'car' => $car,
+            'mainPhoto' => $mainPhoto,
+            'otherPhotos' => $otherPhotos,
+            'schedules' => $schedules,
+            'contactFormUrl' => $contactFormUrl,
+        ]);
+    }
 }

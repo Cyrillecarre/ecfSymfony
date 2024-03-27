@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ContactController!{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/contact.css') }}">
+{% endblock %}
+
+
+{% block body %}
+
+<h1 class="titre">Contactez-nous</h1>
+
+<div class="form">
+    {{ form_start(form) }}
+    <div class="formContent">
+        {{ form_label(form.email) }}
+        {{ form_widget(form.email, {'attr': {}}) }}
+        {{ form_errors(form.email) }}
+
+        {{ form_label(form.subject) }}
+        {{ form_widget(form.subject, {'attr': {}}) }}
+        {{ form_errors(form.subject) }}
+
+        {{ form_label(form.message) }}
+        {{ form_widget(form.message, {'attr': {}}) }}
+        {{ form_errors(form.message) }}
+    </div>
+
+    <button type="submit" class="btnAction">Envoyer</button>
+    {{ form_end(form) }}
+</div>
+
+{% endblock %}

@@ -200,3 +200,49 @@
     flex-wrap: wrap;
     justify-content: center;
 }
+
+.detail {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 60%;
+    background-color: #d9777f88;
+    border: 2px solid #D92332;
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+.detail img {
+    display: flex;
+    justify-content: center;
+    width: 17rem;
+    height: auto;
+    margin: 0 auto;
+    padding: 1rem;
+}
+.detailInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.other-photos {
+    display: flex;
+    flex-direction: row;
+    width: 15rem;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 1rem;
+}
+.other-photos img {
+    width: 18rem;
+    margin: 0.5rem;
+    border-radius: 1rem;
+    cursor: pointer;
+}

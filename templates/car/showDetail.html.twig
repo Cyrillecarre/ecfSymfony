@@ -10,22 +10,25 @@
 {% endblock %}
 
 {% block body %}
-    <h1>{{ car.name }}</h1>
-    <p>Date : {{ car.date }}</p>
-    <p>Kilometrage : {{ car.kilometrage }} km</p>
-    <p>Énergie : {{ car.energie }}</p>
-    <p>Puissance : {{ car.power }} ch</p>
-    <p>Nombre de portes : {{ car.gate }}</p>
-    <p>Prix : {{ car.price }} €</p>
+    <h1 class="titre">{{ car.name }}</h1>
+    <div class="detail">
+        <div class="detailInfo">
+            <p>Date : {{ car.date }}</p>
+            <p>Kilometrage : {{ car.kilometrage }} km</p>
+            <p>Énergie : {{ car.energie }}</p>
+            <p>Puissance : {{ car.power }} ch</p>
+            <p>Nombre de portes : {{ car.gate }}</p>
+            <p>Prix : {{ car.price }} €</p>
+        </div>
 
     {% if car.imagePath %}
         <img src="{{ asset('uploads/' ~ car.imagePath) }}" alt="Image de la voiture">
     {% else %}
         <p>Image non disponible</p>
     {% endif %}
+    </div>
 
     <div class="other-photos">
-        <h2>Autres photos</h2>
         {% if car.photo2 %}
             <img src="{{ asset('uploads/' ~ car.photo2) }}" alt="Autre photo 1">
         {% endif %}
@@ -39,6 +42,6 @@
             <img src="{{ asset('uploads/' ~ car.photo5) }}" alt="Autre photo 4">
         {% endif %}
     </div>
-
-    <a href="{{ path('app_car_show') }}" class="btnAction">Retour à la liste des voitures</a>
+    <a href="{{ contactFormUrl }}" class="btnAction">Contactez-nous pour ce véhicule</a>
+    <a href="{{ path('app_car_show') }}" class="btnAction">Retour</a>
 {% endblock %}
