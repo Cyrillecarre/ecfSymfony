@@ -130,3 +130,79 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
+
+@media only screen and (max-width: 768px) {
+    .titre {
+        font-size: 2rem;
+        font-weight: bold;
+        text-align: center;
+        color: #D92332;
+    }
+
+    .table {
+        width: 95%;
+    }
+
+    .tableIndex {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        justify-content: space-around;
+        align-items: center;
+        padding: 0.3rem;
+        border-bottom: 1px solid #D02332;
+    }   
+
+    .tableDescription {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        justify-content: space-around;
+        text-align: center;
+        align-items: center;
+        padding: 0.3rem;
+    }  
+
+    .tableAction {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        padding: 0.2rem;
+    }
+
+    .form {
+        flex-direction: column;
+        height: auto;
+        margin: 0 auto; 
+    }
+
+    .formContent {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 35vh;
+        height: auto;
+        margin: 0 auto;
+    }
+
+    .card {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .tableDescriptionShow {
+        display: grid;
+        grid-template-columns: 8rem 15rem;
+        text-align: start;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem;
+    }
+    
+    .tableIndexShow {
+        display: grid;
+        grid-template-columns: 8rem 15rem;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem;
+        border-bottom: 1px solid #D02332;
+    }
+}

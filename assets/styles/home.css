@@ -51,7 +51,6 @@
     width: 70%;
     margin: 0 auto;
     padding-bottom: 5rem;
-
 }
 
 .achat {
@@ -136,4 +135,138 @@
     cursor: pointer;
     font-size: 2rem;
     color: #D92332;
+}
+
+.map {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #d9777f89;
+    width: 30rem;
+    height: 30rem;
+    margin: 0 auto;
+}
+
+@media only screen and (max-width: 768px) {
+
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Rajdhani;
+        overflow-x: hidden;
+    }
+
+.accueil {
+    display: flex;
+    width: 90%;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.mainAccueil {
+    display: flex;
+    flex-direction: column;
+    align-items: normal;
+    margin: 0 auto;
+}
+
+
+.titreSpan {
+display: flex;
+color: #D02332;
+font-size: 4rem;
+justify-content: center;
+text-align: center;
+}
+
+.mainAccueil {
+display: flex;
+flex-direction: column;
+align-items: normal;
+width: 80%;
+align-items: center;
+}
+
+.titreAccueil {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+width: max-content;
+font-size: 2rem;
+margin: 0 auto;
+padding: 0;
+}
+
+.article {
+display: none;
+}
+
+.aPropos {
+display: none;
+}
+
+.service {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 90%;
+}
+
+.card {
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.hr {
+    margin-bottom: 1.5rem;
+}
+
+.achat {
+display: none;
+}
+
+.form {
+flex-direction: column;
+padding-top: 1rem;
+height: auto;
+margin: 0 auto; 
+}
+
+.formContent {
+display: grid;
+grid-template-columns: 8rem 13rem;
+flex-direction: column;
+width: 95%;
+height: auto;
+gap: 5px;
+border: 3px solid #D92332;
+background-color: #d9777f88;
+border-radius: 1rem;
+}
+
+.tableGrid {
+display: grid;
+grid-template-columns: 1fr;
+gap: 1rem;
+width: 90%;
+padding: 0;
+}
+
+.tableShow {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.map {
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: #d9777f89;
+width: 90%;
+height: 20rem;
+margin: 0 auto;
+}
 }

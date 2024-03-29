@@ -6,7 +6,10 @@
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{{ asset('styles/header.css') }}">
     <script src="https://kit.fontawesome.com/6db39e2efc.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 </head>
+{% block body %}
 <body>
     <header class="header">
         <img class="logo" src="{{ asset('images/logo.jpg') }}" alt="logo"></a>
@@ -33,6 +36,8 @@
             </nav>
         </div>
     </header>
+    <script src="{{ asset('scripts/header.js') }}"></script>
+    {% endblock %}
 </body>
 
     

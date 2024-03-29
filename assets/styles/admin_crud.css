@@ -131,3 +131,45 @@
     background-color: #d9777f88;
     border-radius: 1rem;
 }
+
+@media only screen and (max-width: 768px) {
+    .titre {
+        font-size: 2rem;
+        font-weight: bold;
+        text-align: center;
+        color: #D92332;
+    }
+     
+    .form {
+        flex-direction: column;
+        height: auto;
+        margin: 0 auto; 
+    }
+
+    .formContent {
+        display: grid;
+        grid-template-columns: 8rem 14rem;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 90%;
+        height: 4rem;
+        margin: 0 auto;
+        padding: 5px;
+        gap: 5px;
+        border: 3px solid #D92332;
+        background-color: #d9777f88;
+        border-radius: 1rem;
+    }
+
+    .table {
+        background-color: #d9777f89;
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        width: 90%;
+        margin-bottom: 2rem;
+        border: 2px solid #D02332;
+        border-radius: 1rem;
+    }
+}

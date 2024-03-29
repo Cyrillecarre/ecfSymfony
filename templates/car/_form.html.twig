@@ -1,4 +1,34 @@
-{{ form_start(form) }}
+{% block body %}
+    <div class="form">
+        {{ form_start(form) }}
+        <div class="formContent">
+            {{ form_label(form.imagePath, 'Photo principale', {'label_attr': {'class': 'label'}}) }}
+            {{ form_widget(form.imagePath, {'label_attr': {'class': 'input'}} ) }}
+            {{ form_label(form.name, 'Nom', {'label_attr': {'class': 'label'}} ) }}
+            {{ form_widget(form.name, {'label_attr': {'class': 'input'}} ) }}
+            {{ form_label(form.date, 'Année', {'label_attr': {'class': 'label'}}) }}
+            {{ form_widget(form.date, {'label_attr': {'class': 'input'}}) }}
+            {{ form_label(form.kilometrage, 'Kilometrage', {'label_attr': {'class': 'label'}}) }}
+            {{ form_widget(form.kilometrage, {'label_attr': {'class': 'input'}}) }}
+            {{ form_label(form.energie, 'Energie', {'label_attr': {'class': 'label'}}) }}
+            {{ form_widget(form.energie, {'label_attr': {'class': 'input'}}) }}
+            {{ form_label(form.power, 'Puissance', {'label_attr': {'class': 'label'}}) }}
+            {{ form_widget(form.power, {'label_attr': {'class': 'input'}}) }}
+            {{ form_label(form.gate, 'Porte', {'label_attr': {'class': 'label'}}) }}
+            {{ form_widget(form.gate, {'label_attr': {'class': 'input'}} ) }}
+            {{ form_label(form.price, 'Prix', {'label_attr': {'class': 'label'}}) }}
+            {{ form_widget(form.price, {'label_attr': {'class': 'input'}}) }}
+            {{ form_label(form.photo2, 'Photo 2', {'label_attr': {'class': 'label'}} ) }}
+            {{ form_widget(form.photo2, {'label_attr': {'class': 'input'}} ) }}
+            {{ form_label(form.photo3, 'Photo 3', {'label_attr': {'class': 'label'}} ) }}
+            {{ form_widget(form.photo3, {'label_attr': {'class': 'input'}} ) }}
+            {{ form_label(form.photo4, 'Photo 4', {'label_attr': {'class': 'label'}} ) }}
+            {{ form_widget(form.photo4, {'label_attr': {'class': 'input'}} ) }}
+            {{ form_label(form.photo5, 'Photo 5', {'label_attr': {'class': 'label'}} ) }}
+            {{ form_widget(form.photo5, {'label_attr': {'class': 'input'}} ) }}
+        </div>       
+    <button class="btnAction">{{ button_label|default('Enregistrer') }}</button>
     {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
+</div>
+{% endblock %}

@@ -24,15 +24,6 @@
     padding-top: 5rem;
 }
 
-.entretienReparation h1 {
-    color: #D02332;
-    font-size: 6rem;
-    text-align: center;
-    margin: 0;
-    padding-top: 5rem;
-}
-
-
 .entretien1 {
     display: flex;
     width: 70%;
@@ -89,4 +80,71 @@
     background-position: center;
     height: 55vh;
     width: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Rajdhani;
+        overflow-x: hidden;
+    }
+  
+    
+    .entretienAccueil h1 {
+        color: #D02332;
+        font-size: 4rem;
+        text-align: center;
+        margin: 0;
+        padding-top: 5rem;
+    }
+    
+    
+    .entretien1 {
+        display: flex;
+        width: 70%;
+        margin: 0 auto;
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+        font-size: 1.5rem;
+        text-align: center;
+    }
+    
+    .entretien {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin: auto;
+        overflow: hidden;
+        padding-bottom: 8rem;
+    }
+    
+    .entretien2 {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
+        font-size: 2.5rem;
+        align-items: center;
+        list-style: none;
+    }
+    
+    .liEntretien {
+        list-style: none;
+    }
+    
+    .liEntretien li {
+        padding: 1.2rem;
+        font-size: 1.5rem;
+    }
+
+    .liEntretien i {
+        font-size: 1.5rem;
+    }
+    
+    .iColor {
+        color: #D02332;
+        font-size: 2.5rem;
+    }
 }

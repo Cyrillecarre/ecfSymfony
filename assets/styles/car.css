@@ -82,7 +82,6 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-
     padding: 1rem;
 }
 
@@ -178,6 +177,33 @@
     padding-bottom: 3rem;
 }
 
+.form {
+    flex-direction: column;
+    height: auto;
+    margin: 0 auto; 
+}
+
+.label {
+    font-size: 1rem;
+    margin: 0;
+    padding: 0.5rem;
+}
+
+.formContent {
+    display: grid;
+    grid-template-columns: 15rem 18rem;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 34rem;
+    height: auto;
+    margin: 0 auto;
+    padding: 5px;
+    gap: 6px;
+    border: 3px solid #D92332;
+    background-color: #d9777f88;
+    border-radius: 1rem;
+}
 
 .label {
     display: flex;
@@ -259,3 +285,248 @@
     border-radius: 1rem;
     cursor: pointer;
 }
+
+@media only screen and (max-width: 768px) {
+
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Rajdhani;
+        overflow-x: hidden;
+    }
+
+    .mainOccasion {
+        padding-bottom: 5rem;
+    }
+
+    .titreCar {
+        display: flex;
+        justify-content: center;
+        font-size: 3rem;
+        color: #D02332;
+        background-image: url('../images/occasion.jpg');
+        background-size: cover;
+        background-position: center 40%;
+        padding: 5rem;
+        width: 65%;
+        margin: 0 auto;
+        text-transform: uppercase;
+    }
+    
+    .titreCar {
+        color: #D02332;
+        font-size: 3rem;
+        text-align: center;
+        padding-top: 5rem;
+        margin: 0 auto;
+    }
+    
+    .titreFiltre {
+        font-size: 3rem;
+        color: black;
+        margin: 0;
+        text-align: center;
+        width: 90%;
+        margin: 0 auto;
+    }
+    
+    .filtre {
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-content: center;
+        align-items: center;
+        width: 60%;
+        gap: 10px;
+        margin: 0 auto;
+        padding-bottom: 3rem;
+    }
+    
+    
+    .label {
+        display: flex;
+        text-align: center;
+        align-items: center;
+        margin-top: 0.5rem;
+    }
+    
+    .filtreContent {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: 2px solid #D92332;
+        background-color: #d9777f88;
+        border-radius: 1rem;
+    
+    }
+    
+    .submit {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        height: 2.5rem;
+        font-size: 1.1rem;
+        border: 2px solid #D92332;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        margin: 0 auto;
+    }
+    
+    .occasion1 {
+        display: flex;
+        width: 70%;
+        margin: 0 auto;
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+        font-size: 1.5rem;
+        text-align: center;
+    }
+    
+    .vehiculeContener {
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-content: center;
+        justify-items: center;
+        gap: 10px;
+        width: 80%;
+        height: auto;
+        margin: 0 auto;
+    }
+    
+    .vehiculeLink {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        height: 2.5rem;
+        font-size: 1.1rem;
+        border: 2px solid #D92332;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        padding: 3px;
+        margin: 0 auto;
+        background-color: white;
+    }
+
+    .detail {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        width: 80%;
+        background-color: #d9777f88;
+        border: 2px solid #D92332;
+        border-radius: 1rem;
+        padding: 1rem;
+    }
+    
+    .detail img {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 80%;
+        height: auto;
+        margin: 0 auto;
+        padding: 1rem;
+    }
+    .detailInfo {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        padding: 1rem;
+    }
+    
+    .other-photos {
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        padding: 1rem;
+    }
+    .other-photos img {
+        width: 90%;
+        margin: 0.5rem;
+        border-radius: 1rem;
+        cursor: pointer;
+    }
+
+    .table {
+        background-color: #d9777f89;
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        width: 95%;
+        margin-bottom: 2rem;
+        border: 2px solid #D02332;
+        border-radius: 1rem;
+    }
+    
+    .tableIndex {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr) 2fr;
+        justify-content: space-around;
+        align-items: center;
+        font-size: 0.7rem;
+        padding: 1rem;
+        border-bottom: 1px solid #D02332;
+    }   
+    
+    .tableDescription {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr) 2fr;
+        justify-content: space-around;
+        font-size: 0.7rem;
+        text-align: center;
+        align-items: center;
+        padding: 1rem;
+    }  
+    
+    .tableAction {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 1rem;
+    }
+
+    .formContent {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 35vh;
+        height: auto;
+        margin: 0 auto;
+        padding: 5px;
+        gap: 5px;
+        border: 3px solid #D92332;
+        background-color: #d9777f88;
+        border-radius: 1rem;
+    }
+    
+    .label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 1.6rem;
+        margin: 0.5rem;
+        font-weight: bold;
+        color: black;
+    }
+    
+    .input {
+        display: flex;
+        justify-items: center;
+        justify-content: center;
+        height: 1.9rem;
+        margin: 0.5rem;
+        border: 1px solid #D92332;
+        border-radius: 0.5rem;
+    }
+    }

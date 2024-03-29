@@ -32,7 +32,6 @@
                 </article>
             </div>
         </div>
-            <hr class="hr">
     </main>
             <div class="aPropos">
                 <h2 class="titreAccueil">à propos de <br><span class="titreSpan">GARAGE V.PARROT</span></h2>
@@ -76,11 +75,11 @@
                 {% if review.isApprouved == "1" %}
                     <div class="tableShow">
                     <p>Note : </p>
-                    <div id="etoileContainer">
-                        {% for i in 1..review.count %}
-                        <span class="etoile" data-value="{{ i }}">&#9733;</span>
-                        {% endfor %}
-                    </div>
+                        <div id="etoileContainer">
+                            {% for i in 1..review.count %}
+                            <span class="etoile" data-value="{{ i }}">&#9733;</span>
+                            {% endfor %}
+                        </div>
                     <p> Nom : </p>
                     <p>{{ review.name }}</p>
                     <p>Date de publication : </p>
@@ -97,6 +96,10 @@
         </div>
     </main>
     <hr class="hr">
+    <h2 class="titreAccueil">Ou Sommes-nous</h2>
+    <div id="map" class="map">
+                api map
+    </div>  
 
-
+<script src="{{ asset('scripts/home.js') }}"></script>
 {% endblock %}

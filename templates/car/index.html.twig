@@ -32,7 +32,6 @@
                 <td>{{ car.gate }}</td>
                 <td>{{ car.price }}</td>
                 <td class="tableAction">
-                    <a href="{{ path('app_car_show', {'id': car.id}) }}" class="btnActionVoir">Voir</a>
                     <a href="{{ path('app_car_edit', {'id': car.id}) }}" class="btnActionModifier">Modifier</a>
                 </td>
             </tr>
@@ -45,4 +44,10 @@
     </table>
 
     <a href="{{ path('app_car_new') }}" class="btnAction">Ajouter un véhicule</a>
+    {% if is_granted('ROLE_USER') %}
+        {% set retourUrl = path('app_user') %}
+    {% elseif is_granted('ROLE_ADMIN') %}
+        {% set retourUrl = path('app_admin') %}
+    {% endif %}
+    <a href="{{ retourUrl }}" class="btnAction">Retour</a>
 {% endblock %}
