@@ -1,17 +1,25 @@
 {% block body %}
-<div class="form">
+    <div class="form">
         {{ form_start(form) }}
-    <div class="formContent">
-        {{ form_label(form.count, 'Note', {'label_attr': {'class':'label'}}) }}
-        {{ form_widget(form.count, {'label_attr': {'class': 'input'}}) }}
-        {{ form_label(form.name, 'Nom', {'label_attr': {'class':'label'}}) }}
-        {{ form_widget(form.name, {'label_attr': {'class': 'input'}}) }}
-        {{ form_label(form.date, 'Date', {'label_attr': {'class':'label'}}) }}
-        {{ form_widget(form.date, {'label_attr': {'class': 'input'}}) }}
-        {{ form_label(form.content, 'Commentaire', {'label_attr': {'class':'label'}}) }}
-        {{ form_widget(form.content, {'label_attr': {'class': 'input'}}) }}
-    <button class="btnActionForm">{{ button_label|default('Enregistrer') }}</button>
-    <div>
-{{ form_end(form) }}
+        <div class="formContent">
+            {{ form_row(form.count, {'label': 'Note', 'label_attr': {'class': 'label', 'for': 'count'}, 'attr': {'style': 'display: none;'}}) }}    
+            <div id="countEtoile">
+                <span class="etoile" id="etoile1" data-value="1">&#9733;</span>
+                <span class="etoile" id="etoile2" data-value="2">&#9733;</span>
+                <span class="etoile" id="etoile3" data-value="3">&#9733;</span>
+                <span class="etoile" id="etoile4" data-value="4">&#9733;</span>
+                <span class="etoile" id="etoile5" data-value="5">&#9733;</span>
+            </div>
+
+            {{ form_label(form.name, 'Nom', {'label_attr': {'class':'label', 'for':'name'}}) }}
+            {{ form_widget(form.name, {'label_attr': {'class': 'input'}}) }}
+            {{ form_label(form.date, 'Date', {'label_attr': {'class':'label', 'for':'date'}}) }}
+            {{ form_widget(form.date, {'label_attr': {'class': 'input'}}) }}
+            {{ form_label(form.content, 'Commentaire', {'label_attr': {'class':'label', 'for':'content'}}) }}
+            {{ form_widget(form.content, {'label_attr': {'class': 'input'}}) }}
+            <button class="btnActionForm">{{ button_label|default('Enregistrer') }}</button>
+        </div>
+        {{ form_end(form) }}
+    </div>
 {% endblock %}
 

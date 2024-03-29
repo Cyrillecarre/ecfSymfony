@@ -10,6 +10,7 @@
     border-radius: 0.5rem;
     cursor: pointer;
     margin-top: 2rem;
+    text-align: center;
 }
 
 .btnActionModifier {
@@ -29,6 +30,21 @@
     padding: 5rem;
     text-align: center;
     max-width: 65%;
+    margin: 0 auto;
+    text-transform: uppercase;
+}
+
+.titreCar {
+    display: flex;
+    justify-content: center;
+    font-size: 3rem;
+    color: #D02332;
+    background-image: url('../images/occasion.jpg');
+    background-size: cover;
+    background-position: center 60%;
+    padding: 5rem;
+    width: 100%;
+    height: 50vh;
     margin: 0 auto;
     text-transform: uppercase;
 }
@@ -183,16 +199,13 @@
 
 .submit {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin: 0 auto;
     height: 2.5rem;
     font-size: 1.1rem;
     border: 2px solid #D92332;
     border-radius: 0.5rem;
     cursor: pointer;
-    margin: 0 auto;
+    margin-bottom: 3rem;
 }
 
 .main {

@@ -6,19 +6,22 @@ use App\Entity\Review;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
 class ReviewType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('count')
+            ->add('count', IntegerType::class, [
+                'mapped' => true,
+            ])
             ->add('name')
             ->add('date', null, [
                 'widget' => 'single_text',
             ])
-            ->add('content')
-        ;
+            ->add('content');
+            
     }
 
     public function configureOptions(OptionsResolver $resolver): void

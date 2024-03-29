@@ -37,7 +37,7 @@ class ReviewController extends AbstractController
             $entityManager->persist($review);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_review_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_review_show', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('review/new.html.twig', [
@@ -50,6 +50,10 @@ class ReviewController extends AbstractController
     #[Route('/show', name: 'app_review_show', methods: ['GET'])]
     public function show(ReviewRepository $reviewRepository, ScheduleRepository $scheduleRepository): Response
     {
+        if ($this->getUser()) {
+            return $this->redirectToRoute('app_logout');
+            
+        }
         $schedules = $scheduleRepository->findAll();
         return $this->render('review/show.html.twig', [
             'reviews' => $reviewRepository->findAll(),
@@ -87,5 +91,14 @@ class ReviewController extends AbstractController
         }
 
         return $this->redirectToRoute('app_review_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    public function home(ReviewRepository $reviewRepository, ScheduleRepository $scheduleRepository): Response
+    {
+        $schedules = $scheduleRepository->findAll();
+        return $this->render('home/index.html.twig', [
+            'reviews' => $reviewRepository->findAll(),
+            'schedules' => $schedules,
+        ]);
     }
 }

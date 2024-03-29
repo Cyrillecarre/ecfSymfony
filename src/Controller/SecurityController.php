@@ -15,7 +15,7 @@ class SecurityController extends AbstractController
     {
         $schedules = $scheduleRepository->findAll();
          if ($this->getUser()) {
-             return $this->redirectToRoute('app_home');
+             return $this->redirectToRoute('app_logout');
              
          }
 

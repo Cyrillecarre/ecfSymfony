@@ -1,0 +1,92 @@
+.entretienAccueil {
+    background-image: url("../images/entretien1.png");
+    background-size: cover;
+    height: 70vh;
+    background-position: center top;
+    padding: 0;
+    margin: 0;
+}
+
+.entretienReparation {
+    background-image: url("../images/reparation2.png");
+    background-size: cover;
+    height: 70vh;
+    background-position: center top;
+    padding: 0;
+    margin: 0;
+}
+
+.entretienAccueil h1 {
+    color: #D02332;
+    font-size: 6rem;
+    text-align: center;
+    margin: 0;
+    padding-top: 5rem;
+}
+
+.entretienReparation h1 {
+    color: #D02332;
+    font-size: 6rem;
+    text-align: center;
+    margin: 0;
+    padding-top: 5rem;
+}
+
+
+.entretien1 {
+    display: flex;
+    width: 70%;
+    margin: 0 auto;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.entretien {
+    display: grid;
+    grid-template-columns: 50% 35%;
+    width: 70%;
+    margin: auto;
+    overflow: hidden;
+    padding-bottom: 8rem;
+}
+
+.entretien2 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    font-size: 2.5rem;
+    align-items: center;
+    list-style: none;
+}
+
+.liEntretien {
+    list-style: none;
+}
+
+.liEntretien li {
+    padding: 1.5rem;
+}
+
+.iColor {
+    color: #D02332;
+    font-size: 2.5rem;
+}
+
+.imgE{
+    background-image: url("../images/mandataire2.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 55vh;
+    width: 100%;
+}
+
+.imgEr{
+    background-image: url("../images/reparation1.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 55vh;
+    width: 100%;
+}

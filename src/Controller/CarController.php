@@ -102,6 +102,10 @@ class CarController extends AbstractController
     #[Route('/show', name: 'app_car_show', methods: ['GET', 'POST'])]
     public function show(CarRepository $carRepository, ScheduleRepository $scheduleRepository): Response
     {
+        if ($this->getUser()) {
+            return $this->redirectToRoute('app_logout');
+            
+        }
         $schedules = $scheduleRepository->findAll();
         return $this->render('car/show.html.twig', [
             'cars' => $carRepository->findAll(),

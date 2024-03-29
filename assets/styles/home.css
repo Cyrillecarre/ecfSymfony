@@ -105,3 +105,35 @@
     width: 40%;
     margin: 0 auto;
 }
+
+.tableShow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 27rem;
+    height: 17rem;
+    background-color: #d9777f89;
+    border: 2px solid #D02332;
+    align-items: center;
+    text-align: center;
+    border-radius: 1rem;
+}
+
+.tableGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 0 auto;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem; 
+    margin-bottom: 4rem; 
+}
+
+.etoile input {
+    display: none;
+}
+
+.etoile {
+    cursor: pointer;
+    font-size: 2rem;
+    color: #D92332;
+}

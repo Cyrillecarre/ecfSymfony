@@ -43,6 +43,21 @@
     text-transform: uppercase;
 }
 
+.titreImg {
+    display: flex;
+    justify-content: center;
+    font-size: 3rem;
+    color: #D02332;
+    background-image: url('../images/experience.jpg');
+    background-size: cover;
+    background-position: center 60%;
+    padding: 5rem;
+    width: 100%;
+    height: 50vh;
+    margin: 0 auto;
+    text-transform: uppercase;
+}
+
 .table {
     background-color: #d9777f89;
     display: flex;
@@ -81,7 +96,7 @@
 
 .form {
     flex-direction: column;
-    height: 25rem;
+    height: 18rem;
     margin: 0 auto; 
 }
 
@@ -122,19 +137,38 @@
 }
 
 .tableShow {
-    display: flex;
-    width: 7rem;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 27rem;
+    height: 17rem;
     background-color: #d9777f89;
     border: 2px solid #D02332;
     align-items: center;
+    text-align: center;
     border-radius: 1rem;
 }
 
 .tableGrid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     margin: 0 auto;
     align-items: center;
+    gap: 1rem;
     padding: 1rem;  
 }
+
+.etoile input {
+    display: none;
+}
+
+.etoile {
+    cursor: pointer;
+    font-size: 2rem;
+    color: #D92332;
+}
+
+.etoile.inputClic {
+    display: inline; 
+    color: gold; 
+}
+

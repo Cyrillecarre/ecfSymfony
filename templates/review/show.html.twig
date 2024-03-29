@@ -6,15 +6,23 @@
 {% endblock %}
 
 {% block body %}
-    <h1 class="titre">Avis</h1>
+    <h1 class="titreImg">Avis des consommateurs</h1>
     <a href="{{ path('app_review_new') }}" class="btnAction">Déposer un avis</a>
     <div class="tableGrid">
     {% for review in reviews %}
         {% if review.isApprouved == "1" %}
         <div class="tableShow">
-                <p>{{ review.count }}</p>
+                <p>Note : </p>
+                <div id="etoileContainer">
+                    {% for i in 1..review.count %}
+                    <span class="etoile" data-value="{{ i }}">&#9733;</span>
+                    {% endfor %}
+                </div>
+                <p> Nom : </p>
                 <p>{{ review.name }}</p>
+                <p>Date de publication : </p>
                 <p>{{ review.date ? review.date|date('Y-m-d') : '' }}</p>
+                <p>Avis :</p>
                 <p>{{ review.content }}</p>
         </div>
         {% endif %}
@@ -24,6 +32,4 @@
             </tr>
         {% endfor %}
         </div>
-
-    <a href="{{ path('app_review_index') }}" class="btnAction">Retour</a>
 {% endblock %}

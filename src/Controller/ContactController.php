@@ -60,6 +60,10 @@ class ContactController extends AbstractController
     #[Route('/contact/general', name: 'contact_general')]
     public function contactGeneral (MailerInterface $mailer, Request $request, ScheduleRepository $scheduleRepository): Response
     {
+        if ($this->getUser()) {
+            return $this->redirectToRoute('app_logout');
+            
+        }
         $schedules = $scheduleRepository->findAll();
         $form = $this->createForm(ContactType::class);
         $form->handleRequest($request);

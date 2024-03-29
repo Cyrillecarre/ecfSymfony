@@ -5,12 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{{ asset('styles/header.css') }}">
+    <script src="https://kit.fontawesome.com/6db39e2efc.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <header class="header">
         <img class="logo" src="{{ asset('images/logo.jpg') }}" alt="logo"></a>
         <div class="headerNav">
-                <a href="{{ path('app_login') }}" class="header2"></i>Connexion</a>
+            <div class="header2">
+                <a href="{{ path('app_login') }}"><i class="fa-solid fa-user-secret"></i> Connexion</a>
+                <p>TEL : 06 71 06 19 19</p>
+                <p>Mail : contact@gmail.com</p>
+            </div>
             <div class="burger-menu" id="burger-menu">
                 <div class="bar"></div>
                 <div class="bar"></div>
@@ -19,8 +24,8 @@
             <nav class="nav">
                 <ul class="navListe">
                     <li class="navList"><a href="{{ path('app_home') }}">Accueil</a></li>
-                    <li class="navList"><a href="{{ path('app_home') }}">Entretien</a></li>
-                    <li class="navList"><a href="{{ path('app_home') }}">Réparation</a></li>
+                    <li class="navList"><a href="{{ path('app_entretien') }}">Entretien</a></li>
+                    <li class="navList"><a href="{{ path('app_reparation') }}">Réparation</a></li>
                     <li class="navList"><a href="{{ path('app_car_show') }}">Véhicule Occasion</a></li>
                     <li class="navList"><a href="{{ path('contact_general') }}">Contact</a></li>
                     <li class="navList"><a href="{{ path('app_review_show') }}">Avis</a></li>

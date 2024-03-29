@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Entretien{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/entretien.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="entretienAccueil">
+            <h1>Entretien</h1>
+        </div>
+        <div class="entretien1">
+            <p>Garage V.PARROT vous propose également des prestations de réparation et d’entretien de votre véhicule. 
+                Nous vous proposons des prestations de qualité à des prix compétitifs.
+            </p>
+        </div>
+        <div class="entretien">
+            <div class="entretien2">
+                <ul class="liEntretien">
+                    <li><i class="fa-solid fa-arrow-right iColor"></i> Vidange</li>
+                    <li><i class="fa-solid fa-arrow-right iColor"></i> Pneus</li>
+                    <li><i class="fa-solid fa-arrow-right iColor"></i> Climatisation</li>
+                    <li><i class="fa-solid fa-arrow-right iColor"></i> Paralélisme</li>
+                    <li><i class="fa-solid fa-arrow-right iColor"></i> Distribution</li>
+                </ul>
+            </div>
+            <div class="imgE">
+            </div>
+        </div> 
+{% endblock %}

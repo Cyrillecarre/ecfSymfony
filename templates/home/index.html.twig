@@ -54,16 +54,49 @@
         <div class="achatImg">
             <img src= "{{ asset('images/accueilachat.png') }}" alt="photoaccueil1">
         </div>
-        
-            <div class="achatText"> 
-                    <h2>Achat</h2>
-                    <p>L’entreprise Garage V.PARROT possède une grande connaissance du marché automobile et trouve des véhicules au meilleur prix.</p>
-                    <h2>Vente</h2>
-                    <p>Garage V.PARROT vous fait économiser jusqu’à 40% sur le prix de vente de votre voiture neuve.</p>
-                    <h2>Reprise</h2>
-                    <p>Nous reprenons votre véhicule au meilleur prix. Contactez-nous pour en savoir plus.</p>
-            </div>
+        <div class="achatLogo">
+            <i class="fa-solid fa-gear"></i>
+            <i class="fa-solid fa-user-secret"></i>
+            <i class="fa-solid fa-code-compare"></i>
+        </div>
+        <div class="achatText"> 
+            <h2>Achat</h2>
+            <p>L’entreprise Garage V.PARROT possède une grande connaissance du marché automobile et trouve des véhicules au meilleur prix.</p>
+            <h2>Vente</h2>
+            <p>Garage V.PARROT vous fait économiser jusqu’à 40% sur le prix de vente de votre voiture neuve.</p>
+            <h2>Reprise</h2>
+            <p>Nous reprenons votre véhicule au meilleur prix. Contactez-nous pour en savoir plus.</p>
+        </div>
     </main>
+    <hr class="hr">
+    <main>
+        <h2 class="titreAccueil">Les Avis de nos clients</h2>
+        <div class="tableGrid">
+            {% for review in reviews %}
+                {% if review.isApprouved == "1" %}
+                    <div class="tableShow">
+                    <p>Note : </p>
+                    <div id="etoileContainer">
+                        {% for i in 1..review.count %}
+                        <span class="etoile" data-value="{{ i }}">&#9733;</span>
+                        {% endfor %}
+                    </div>
+                    <p> Nom : </p>
+                    <p>{{ review.name }}</p>
+                    <p>Date de publication : </p>
+                    <p>{{ review.date ? review.date|date('Y-m-d') : '' }}</p>
+                    <p>Avis :</p>
+                    <p>{{ review.content }}</p>
+                    </div>
+                {% endif %}
+            {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </div>
+    </main>
+    <hr class="hr">
 
 
 {% endblock %}

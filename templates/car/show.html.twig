@@ -13,7 +13,7 @@
 {% endblock %}
 
 {% block body %}
-    <h1 class="titre">Car</h1>
+    <h1 class="titreCar">Nos Véhicules D'occasion</h1>
     <h3 class="titreFiltre">Ajustez vos critères de recherches</h3>
         <form class="filtre" id="filtreForm" data-action="{{ path('app_car_show') }}">
             <div class="filtreContent">
@@ -31,9 +31,11 @@
                 <input type="range" name="rangeInputKm" id="rangeInputKm" min="0" max="300000" value="50%">
                 <p>Km maximum : <span id="currentValueKm">150000</span><span> km</span></p>    
             </div>
-       <div>
-            <input type="submit" class="submit" value="Appliquer les filtres"></input>
-        </div>
+            <div>
+            </div>
+            <div class="submitContainer">
+                <input type="submit" class="submit" value="Appliquer les filtres"></input>
+            </div>
         </form>
 
     <main class="main">

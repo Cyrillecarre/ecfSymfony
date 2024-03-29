@@ -40,5 +40,10 @@
     </table>
 
     <a href="{{ path('app_review_new') }}" class="btnAction">Ajouter un Avis</a>
-    <a href="{{ path('app_admin') }}" class="btnAction">Retour</a>
+    {% if is_granted('ROLE_USER') %}
+        {% set retourUrl = path('app_user') %}
+    {% elseif is_granted('ROLE_ADMIN') %}
+        {% set retourUrl = path('app_admin') %}
+    {% endif %}
+    <a href="{{ retourUrl }}" class="btnAction">Retour</a>
 {% endblock %}
