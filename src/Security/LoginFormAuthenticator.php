@@ -42,11 +42,6 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
-        if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
-            return new RedirectResponse($targetPath);
-        }
-
-        // Vérifiez si l'utilisateur est un administrateur
         if ($this->authorizationChecker->isGranted('ROLE_ADMIN')) {
             return new RedirectResponse($this->urlGenerator->generate('app_admin'));
         }
@@ -54,6 +49,7 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
         if ($this->authorizationChecker->isGranted('ROLE_USER')) {
             return new RedirectResponse($this->urlGenerator->generate('app_user'));
         }
+        return new RedirectResponse($this->urlGenerator->generate('app_login'));
     }
 
     protected function getLoginUrl(Request $request): string

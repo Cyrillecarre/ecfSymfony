@@ -7,17 +7,9 @@
         <img class="imgFooter" src="{{ asset('images/footer.jpg') }}" alt="logo" class="logo">
         <div class="horaire"> 
             <h2>Horaires <i class="fa-solid fa-clock"></i></h2>    
-            {% for schedule in schedules %}
-            <table class="horaireTable">
-                <tr class="horaireTr">
-                    <td class="horaireDay">{{ schedule.day }} :</td>
-                    <td class="horaireTd">{{ schedule.formattedHoursOMatin }} - </td>
-                    <td class="horaireTd">{{ schedule.formattedHoursFMatin }} / </td>
-                    <td class="horaireTd">{{ schedule.formattedHoursOA }} - </td>
-                    <td class="horaireTd">{{ schedule.formattedHoursFA }}</td>
-                </tr>
-            </table>
-            {% endfor %}
+            <div>
+                {{ render(controller('App\\Controller\\RenderController::index')) }}
+            </div>
         </div>
         <div>
             <h2>Adresse <i class="fa-solid fa-location-dot"></i> </h2>

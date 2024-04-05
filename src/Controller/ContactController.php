@@ -10,7 +10,6 @@ use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 use App\Form\ContactType;
 use App\Repository\CarRepository;
-use App\Repository\ScheduleRepository;
 use App\Form\ContactDetailType;
 
 class ContactController extends AbstractController
@@ -24,9 +23,8 @@ class ContactController extends AbstractController
     }
 
     #[Route('/contact/form', name: 'contact_form')]
-    public function contactForm(Request $request, MailerInterface $mailer, ScheduleRepository $scheduleRepository): Response
+    public function contactForm(Request $request, MailerInterface $mailer): Response
     {
-        $schedules = $scheduleRepository->findAll();
         $form = $this->createForm(ContactDetailType::class);
 
         $form->get('subject')->setData($request->get('car_name'));
@@ -52,19 +50,17 @@ class ContactController extends AbstractController
 
         return $this->render('contact/personal.html.twig', [
             'form' => $form->createView(),
-            'schedules' => $schedules,
         ]);
     }
     
 
     #[Route('/contact/general', name: 'contact_general')]
-    public function contactGeneral (MailerInterface $mailer, Request $request, ScheduleRepository $scheduleRepository): Response
+    public function contactGeneral (MailerInterface $mailer, Request $request): Response
     {
         if ($this->getUser()) {
             return $this->redirectToRoute('app_logout');
             
         }
-        $schedules = $scheduleRepository->findAll();
         $form = $this->createForm(ContactType::class);
         $form->handleRequest($request);
 
@@ -84,19 +80,15 @@ class ContactController extends AbstractController
 
         return $this->render('contact/index.html.twig', [
             'form' => $form->createView(),
-            'schedules' => $schedules,
         ]);
     }
 
 
 
     #[Route('/contact/confirmation', name: 'contact_confirmation')]
-    public function contactConfirmation(ScheduleRepository $scheduleRepository): Response
+    public function contactConfirmation(): Response
     {
-        $schedules = $scheduleRepository->findAll();
-        return $this->render('contact/confirmation.html.twig', [
-            'schedules' => $schedules,
-        ]);
+        return $this->render('contact/confirmation.html.twig');
     }
 }
 

@@ -51,7 +51,6 @@ class ScheduleCrudController extends AbstractController
         return $this->render('schedule_crud/show.html.twig', [
             'schedule' => $schedule,
             'schedules' => $schedules,
-
         ]);
     }
 

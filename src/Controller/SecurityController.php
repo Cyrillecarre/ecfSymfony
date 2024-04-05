@@ -2,31 +2,33 @@
 
 namespace App\Controller;
 
-use App\Repository\ScheduleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Symfony\Component\HttpFoundation\Cookie;
 
 class SecurityController extends AbstractController
 {
     #[Route(path: '/login', name: 'app_login', methods: ['GET', 'POST'])]
-    public function login(AuthenticationUtils $authenticationUtils, ScheduleRepository $scheduleRepository): Response
+    public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        $schedules = $scheduleRepository->findAll();
          if ($this->getUser()) {
-             return $this->redirectToRoute('app_logout');
-             
+             return $this->redirectToRoute('app_logout');  
          }
 
         $error = $authenticationUtils->getLastAuthenticationError();
-        // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
-        return $this->render('security/login.html.twig', [
-            'last_username' => $lastUsername, 'error' => $error,
-            'schedules' => $schedules,
+        $lastUsernameCookie = $_COOKIE['last_username'] ?? null;
+
+        $response = $this->render('security/login.html.twig', [
+            'last_username' => $lastUsernameCookie ?? $lastUsername, 
+            'error' => $error,
         ]);
+
+        $response->headers->setCookie(new Cookie('last_username', $lastUsername, time() + 3600, '/'));
+        return $response;
     }
 
     #[Route(path: '/logout', name: 'app_logout')]

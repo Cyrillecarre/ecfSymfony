@@ -1,0 +1,11 @@
+{% for schedule in schedules %}
+    <table class="horaireTable">
+        <tr class="horaireTr">
+            <td class="horaireDay">{{ schedule.day }} :</td>
+            <td class="horaireTd">{{ schedule.formattedHoursOMatin }} - </td>
+            <td class="horaireTd">{{ schedule.formattedHoursFMatin }} / </td>
+            <td class="horaireTd">{{ schedule.formattedHoursOA }} - </td>
+            <td class="horaireTd">{{ schedule.formattedHoursFA }}</td>
+        </tr>
+    </table>
+{% endfor %}

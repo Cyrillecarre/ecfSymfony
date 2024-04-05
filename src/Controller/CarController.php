@@ -18,19 +18,16 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 class CarController extends AbstractController
 {
     #[Route('/', name: 'app_car_index', methods: ['GET'])]
-    public function index(CarRepository $carRepository, ScheduleRepository $scheduleRepository): Response
+    public function index(CarRepository $carRepository): Response
     {
-        $schedules = $scheduleRepository->findAll();
         return $this->render('car/index.html.twig', [
             'cars' => $carRepository->findAll(),
-            'schedules' => $schedules,
         ]);
     }
 
     #[Route('/new', name: 'app_car_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager, ScheduleRepository $scheduleRepository): Response
+    public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
-        $schedules = $scheduleRepository->findAll();
         $car = new Car();
         $form = $this->createForm(CarType::class, $car);
         $form->handleRequest($request);
@@ -93,30 +90,26 @@ class CarController extends AbstractController
     return $this->render('car/new.html.twig', [
         'car' => $car,
         'form' => $form->createView(),
-        'schedules' => $schedules,
     ]);
 }
 
     
 
     #[Route('/show', name: 'app_car_show', methods: ['GET', 'POST'])]
-    public function show(CarRepository $carRepository, ScheduleRepository $scheduleRepository): Response
+    public function show(CarRepository $carRepository): Response
     {
         if ($this->getUser()) {
-            return $this->redirectToRoute('app_logout');
-            
+            return $this->redirectToRoute('app_logout');   
         }
-        $schedules = $scheduleRepository->findAll();
+
         return $this->render('car/show.html.twig', [
             'cars' => $carRepository->findAll(),
-            'schedules' => $schedules,
         ]);
     }
 
     #[Route('/{id}/edit', name: 'app_car_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Car $car, EntityManagerInterface $entityManager, ScheduleRepository $scheduleRepository): Response
+    public function edit(Request $request, Car $car, EntityManagerInterface $entityManager): Response
     {
-        $schedules = $scheduleRepository->findAll();
         $form = $this->createForm(CarType::class, $car);
         $form->handleRequest($request);
 
@@ -129,7 +122,6 @@ class CarController extends AbstractController
         return $this->render('car/edit.html.twig', [
             'car' => $car,
             'form' => $form,
-            'schedules' => $schedules,
         ]);
     }
 
@@ -145,10 +137,8 @@ class CarController extends AbstractController
     }
 
     #[Route('/showDetail/{id}/', name: 'app_car_showDetail', methods: ['GET'])]
-    public function showDetail(int $id, CarRepository $carRepository, ScheduleRepository $scheduleRepository, UrlGeneratorInterface $urlGenerator, Car $car): Response
+    public function showDetail(int $id, CarRepository $carRepository, UrlGeneratorInterface $urlGenerator, Car $car): Response
     {
-        
-        $schedules = $scheduleRepository->findAll();
         $car = $carRepository->find($id);
 
         if (!$car) {
@@ -172,7 +162,6 @@ class CarController extends AbstractController
             'car' => $car,
             'mainPhoto' => $mainPhoto,
             'otherPhotos' => $otherPhotos,
-            'schedules' => $schedules,
             'contactFormUrl' => $contactFormUrl,
         ]);
     }

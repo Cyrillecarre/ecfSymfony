@@ -23,9 +23,7 @@
             <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="label" autocomplete="email" required autofocus>
             <label for="inputPassword">Password</label>
             <input type="password" name="password" id="inputPassword" class="label" autocomplete="current-password" required>
-
             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-
         </div>
         <button class="btnAction" type="submit">Envoyer</button>
 </form>

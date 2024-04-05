@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Repository\ScheduleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -10,12 +9,10 @@ use Symfony\Component\Routing\Attribute\Route;
 class UserController extends AbstractController
 {
     #[Route('/user', name: 'app_user')]
-    public function index(ScheduleRepository $scheduleRepository): Response
+    public function index(): Response
     {
-        $schedules = $scheduleRepository->findAll();
         return $this->render('user/index.html.twig', [
             'controller_name' => 'UserController',
-            'schedules' => $schedules
         ]);
     }
 }
