@@ -22,7 +22,7 @@ class ContactType extends AbstractType
                 new Assert\NotBlank(),
                 new Assert\Regex([
                     'pattern' => '/^[a-zA-Z0-9\s]+$/',
-                    'message' => 'Le nom ne doit contenir que des lettres, des chiffres et des espaces.',
+                    'message' => 'Le sujet ne doit contenir que des lettres, des chiffres et des espaces.',
                 ]),
             ],
         ])

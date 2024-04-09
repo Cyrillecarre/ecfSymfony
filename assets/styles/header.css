@@ -88,6 +88,22 @@ a {
 
 @media only screen and (max-width: 768px) {
 
+    .burger-menu {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+    }
+    
+    .navListe {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        text-align: center;
+        background-color: #d9777f89;
+        left: 0;
+        z-index: 1000;
+    }
+    
     body {
         margin: 0;
         padding: 0;
@@ -131,22 +147,6 @@ a {
         width: 100%;
         padding: 0%;
         margin: 0%;
-    }
-
-    .burger-menu {
-        display: flex;
-        flex-direction: column;
-        cursor: pointer;
-    }
-    
-    .navListe {
-        display: none;
-        width: 100%;
-        flex-direction: column;
-        text-align: center;
-        background-color: #d9777f89;
-        left: 0;
-        z-index: 1000;
     }
 
     .nav {

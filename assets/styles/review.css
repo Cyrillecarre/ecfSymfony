@@ -69,15 +69,6 @@
     border-radius: 1rem;
 }
 
-.tableIndex {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-    justify-content: space-around;
-    align-items: center;
-    padding: 1rem;
-    border-bottom: 1px solid #D02332;
-}   
-
 .tableDescription {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -93,6 +84,15 @@
     align-items: center;
     padding: 1rem;
 }
+
+.tableIndex {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid #D02332;
+} 
 
 .form {
     flex-direction: column;

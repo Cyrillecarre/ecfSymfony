@@ -58,9 +58,9 @@ class ContactController extends AbstractController
     public function contactGeneral (MailerInterface $mailer, Request $request): Response
     {
         if ($this->getUser()) {
-            return $this->redirectToRoute('app_logout');
-            
+            return $this->redirectToRoute('app_logout');    
         }
+
         $form = $this->createForm(ContactType::class);
         $form->handleRequest($request);
 
@@ -82,8 +82,6 @@ class ContactController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
-
-
 
     #[Route('/contact/confirmation', name: 'contact_confirmation')]
     public function contactConfirmation(): Response
